@@ -1,0 +1,93 @@
+version: 1.19.0
+
+# Database settings
+mysql:
+  protocol: mysql
+  host: localhost
+  port: 3306
+  database: minecraft
+  user: minecraft
+  password: pass
+  requireSSL: false
+  useSSL: true
+
+consumer:
+  forceToProcessAtLeast: 200
+  delayBetweenRuns: 2
+  queueWarningSize: 1000
+  timePerRun: 1000
+  useBukkitScheduler: true
+
+clearlog:
+  enableAutoClearLog: false
+  autoClearLogDelay: 6h
+  dumpDeletedLog: false
+  auto:
+  - world "world" before 365 days all
+  - world "world" player lavaflow waterflow leavesdecay before 7 days all
+  - world "world" entities before 365 days
+
+logging:
+  logFireSpreadAsPlayerWhoCreatedIt: true
+  logCreeperExplosionsAsPlayerWhoTriggeredThese: false
+  logFluidFlowAsPlayerWhoTriggeredIt: false
+  logPlayerInfo: false
+  logEnvironmentalKills: false
+  logBedExplosionsAsPlayerWhoTriggeredThese: true
+  logKillsLevel: PLAYERS
+  hiddenPlayers: []
+  ignoredChat:
+  - /register
+  - /login
+  hiddenBlocks:
+  - AIR
+  - CAVE_AIR
+  - VOID_AIR
+
+rollback:
+  maxTime: 2 days
+  dontRollback:
+  - LAVA
+  - TNT
+  - FIRE
+  maxArea: 50
+  replaceAnyway:
+  - LAVA
+  - WATER
+  - FIRE
+  - GRASS_BLOCK
+
+lookup:
+  dateFormat: yyyy-MM-dd HH:mm:ss
+  dateFormatShort: MM-dd HH:mm
+  linesPerPage: 15
+  linesLimit: 1500
+  hardLinesLimit: 100000
+  defaultTime: 30 minutes
+  defaultDist: 20
+
+questioner:
+  askRollbacks: true
+  askRedos: true
+  askClearLogs: true
+  askRollbackAfterBan: false
+  askClearLogAfterRollback: true
+  banPermission: mcbans.ban.local
+
+safety:
+  id:
+    check: true
+
+addons:
+  worldguardLoggingFlags: false
+
+debug: false
+
+# If enabled, loggedWorlds will be ignored
+autoLog:
+  NORMAL: false
+  NETHER: false
+  THE_END: false
+  CUSTOM: false
+
+loggedWorlds: []
